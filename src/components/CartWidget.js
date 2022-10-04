@@ -3,9 +3,11 @@ import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 
 const CartWidget = () => {
     return (
-        <i>
+        <div>
             <FontAwesomeIcon icon={ faCartShopping } />
-        </i>
+            {/* Valor Hardcodeado */}
+            <span> 4</span>
+        </div>
     )
 }
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Form, Nav, Navbar, Container} from 'react-bootstrap'
+import {Button, Form, Nav, Navbar, NavDropdown, Container} from 'react-bootstrap'
 import CartWidget from './CartWidget'
 import Logo from '../../src/logo.png'
 
@@ -20,7 +20,11 @@ export default class NavbarComp extends Component {
                             navbarScroll
                         >
                             <Nav.Link href="/">Inicio</Nav.Link>
-                            <Nav.Link href="/">Tienda</Nav.Link>
+                            <NavDropdown title="Tienda" id="basic-nav-dropdown">
+                                <NavDropdown.Item href="/">Remeras</NavDropdown.Item>
+                                <NavDropdown.Item href="/"> Gorras</NavDropdown.Item>
+                                <NavDropdown.Item href="/">Tazas</NavDropdown.Item>
+                            </NavDropdown>
                             <Nav.Link href="/" ><CartWidget/></Nav.Link>
                         </Nav>
                         <Form className="d-flex">
