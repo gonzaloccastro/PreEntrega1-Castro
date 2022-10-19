@@ -16,6 +16,7 @@ const Item = ({prod}) => {
             </Card.Text>
             <Button variant="primary"><Link to={`/item/${prod.id}`} className='url-blanco'> Ver detalle</Link></Button>
         </Card.Body>
+        <Card.Footer className="text-muted">Stock disponible: {prod.stock}</Card.Footer>
         </Card>
     );
     };

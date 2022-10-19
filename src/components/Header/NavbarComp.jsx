@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Form, Nav, Navbar, NavDropdown, Container} from 'react-bootstrap'
+import {Button, Form, Nav, Navbar, Container} from 'react-bootstrap'
 import CartWidget from './CartWidget'
 import Logo from '../../logo.png'
 import { Link } from 'react-router-dom'
