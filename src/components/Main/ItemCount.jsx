@@ -1,28 +1,39 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 
-const ItemCount = (props) => {
-    const [count, setCount] = useState (props.initial);
+const ItemCount = ({stock, initial = 1, onAdd}) => {
+    const [count, setCount] = useState (initial);
 
     const sumar = () => {
-        count < props.stock && setCount(count + 1);
+        count < stock && setCount(count + 1);
     };
     const restar = () => {
-        count > props.initial && setCount(count - 1);
+        count > 1 && setCount(count - 1);
     };
+
+    const add = () => {
+        onAdd(count);
+    };
+
+    useEffect( () => {
+        setCount(initial);
+    }, [initial]);
+
+
     return (
         <div className="container-count">
             <div className="count-btn">
-                <button disabled={count===props.stock} 
+                <button disabled={count===stock} 
                 onClick={sumar}>
                     +
                 </button>
                 <p>{count}</p>
-                <button disabled={count===props.initial}
+                <button
                 onClick={restar}>
                     -
                 </button>
             </div>
-            <button onClick={()=>props.onAdd(count)} 
+            <button onClick={add} 
             className="add-btn">Agregar al carrito</button>
         </div>  
     );

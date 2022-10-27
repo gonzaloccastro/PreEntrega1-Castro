@@ -4,12 +4,15 @@ import { products } from "../../mock/productsMock";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+import {PulseLoader} from 'react-spinners'
+
 
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});
+    const [loading, setLoading] = useState (true);
 
-    const { id }= useParams ();
+    const {id}= useParams ();
 
     useEffect(()=>{
         const traerProductos = () => {
@@ -26,15 +29,31 @@ const ItemDetailContainer = () => {
             })
             .catch((error)=>{
                 console.log(error);
+            })
+            .finally(()=>{
+                setLoading(false);
             });
-    }, []);
+    }, [id]);
 
     console.log(item);
 
     return (
-        <div className="d-flex flex-row justify-content-center">
-            <ItemDetail item={item}/>
-        </div>
+        <div>
+            {loading
+            ? (<div
+                style={{
+                    minHeight:'80vh',
+                    display:'flex',
+                    justifyContent:'center',
+                }}
+            > 
+                <PulseLoader style={{marginTop:'100px'}} color="black" /> 
+            </div>
+            ):(
+                <div className="d-flex flex-row justify-content-center">
+                    <ItemDetail item={item}/>
+                </div>)}
+        </div>   
     );
 };
 
