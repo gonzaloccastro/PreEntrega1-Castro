@@ -39,3 +39,10 @@ a, .url {
   transition: all 0.3s ease-in-out;
 
 }
+
+.categoryNames {
+display: flex;
+margin-top: 1rem;
+margin-right: 1.5rem;
+text-size-adjust: 10px;
+}

@@ -4,7 +4,6 @@ import React, { useContext } from 'react'
 import { CartContext } from '../../context/CartContext'
 
 
-
 const CartWidget = () => {
 
     const {totalUnidades} = useContext(CartContext);
@@ -12,11 +11,19 @@ const CartWidget = () => {
     return (
         <div>
             <FontAwesomeIcon icon={ faCartShopping } />
-            <span>
-                {totalUnidades()}
+            <span style={{padding: '6px'}}>
+                
+
+                {totalUnidades()===0
+                ? ''  
+                : totalUnidades()
+                }
+
+
+
             </span>
         </div>
-    )
-}
+    );
+};
 
 export default CartWidget;

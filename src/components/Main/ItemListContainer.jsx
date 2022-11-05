@@ -1,10 +1,11 @@
 import React from "react";
 import ItemList from '../Main/ItemList';
-import { products } from "../../mock/productsMock";
 import { useEffect } from "react";
 import { useState } from "react";
-import {useParams} from 'react-router-dom';
-import {PulseLoader} from 'react-spinners'
+import { useParams } from 'react-router-dom';
+import { PulseLoader } from 'react-spinners'
+import { collection, query, where, getDocs } from "firebase/firestore";
+import { dataBase } from '../../services/firebaseConfig'
 
 
 
@@ -15,26 +16,29 @@ const ItemListContainer = () => {
     const {categoryName} = useParams (); 
 
     useEffect(()=>{
-        const traerProductos = () => {
-            return new Promise ((res,rej)=>{
-                const prodFiltrados = products.filter((prod)=>prod.categoria===categoryName)
-                setTimeout(()=>{
-                    res(categoryName ? prodFiltrados : products);
-                },600);
-            });
-        };
-        traerProductos()
+    const nombreColeccion = collection (dataBase, 'productos');
+
+    const referencia = categoryName
+        ? query(nombreColeccion, where ('categoria', '==', categoryName))
+        : nombreColeccion;
+
+            getDocs(referencia)
             .then((res)=>{
-            setItems(res);
+                const products = res.docs.map((prod)=>{
+                    return {
+                        id:prod.id,
+                        ...prod.data(),
+                    };
+                });
+                setItems(products);
             })
             .catch((error)=>{
                 console.log(error);
             })
             .finally(()=>{
-            setLoading(false);
+                setLoading(false);
             });
-
-            return () => setLoading (true);
+    
 
     }, [categoryName]);
 

@@ -1,11 +1,35 @@
-import React, { Component } from 'react'
+import React , { useEffect} from 'react'
+import { useState } from "react"
 import {Button, Form, Nav, Navbar, Container} from 'react-bootstrap'
 import CartWidget from './CartWidget'
 import Logo from '../../logo.png'
 import { Link } from 'react-router-dom'
+import { collection, getDocs } from 'firebase/firestore'
+import { dataBase } from '../../services/firebaseConfig'
 
-export default class NavbarComp extends Component {
-    render () {
+
+const CargaNavbar = () => {
+    const [categories, setCategories] = useState ([]);
+
+    useEffect(()=>{
+        const collectionCat = collection(dataBase, 'categorias');
+        getDocs(collectionCat)
+            .then((res)=>{
+                const categorias = res.docs.map ((cat)=>{
+                    return{
+                        id: cat.id,
+                        ...cat.data()
+                    }
+                })
+                setCategories(categorias);
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+
+    }, []);
+
+
         return (
             <div>
                 <Navbar bg="dark" variant="dark" expand="lg">
@@ -18,12 +42,14 @@ export default class NavbarComp extends Component {
                         <Nav
                             className="me-auto my-2 my-lg-0"
                             style={{ maxHeight: '100px' }}
-                            navbarScroll>    
-                            <Link to="/" className='url-blanco'>Tienda</Link>
-                            <Link to="/category/ropa" className='url-blanco'>Ropa</Link>
-                            <Link to="/category/items" className='url-blanco'> Items</Link>
-                            <Link to="/category/libreria" className='url-blanco'>Libreria</Link>
-                            <Link to="/cart" className='url-blanco'><CartWidget/></Link>
+                            navbarScroll>
+                                <ul className='categoryNames'>{categories.map((cat)=>(
+                                    <Link to={`/category/${cat.path}`} key={cat.id} className='url-blanco'>{cat.name}</Link>
+                                ))
+
+                                    }
+                                </ul>
+                                <Link to="/cart" className='url-blanco'><CartWidget/></Link>
                         </Nav>
                         <Form className="d-flex">
                             <Form.Control
@@ -40,4 +66,5 @@ export default class NavbarComp extends Component {
             </div>
         )
     }
-}
+
+export default CargaNavbar;

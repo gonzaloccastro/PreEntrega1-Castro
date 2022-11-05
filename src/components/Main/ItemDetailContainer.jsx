@@ -1,11 +1,11 @@
 import React from "react";
 import ItemDetail from '../Main/ItemDetail';
-import { products } from "../../mock/productsMock";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import {PulseLoader} from 'react-spinners'
-
+import { collection, doc, getDoc } from "firebase/firestore";
+import {dataBase} from '../../services/firebaseConfig'
 
 
 const ItemDetailContainer = () => {
@@ -15,27 +15,25 @@ const ItemDetailContainer = () => {
     const {id}= useParams ();
 
     useEffect(()=>{
-        const traerProductos = () => {
-            return new Promise ((res,rej)=>{
-                const producto = products.find((prod)=> prod.id === Number(id))
-                setTimeout(()=>{
-                    res(producto);
-                },600);
-            });
-        };
-        traerProductos()
-            .then((res)=>{
-            setItem(res);
-            })
-            .catch((error)=>{
-                console.log(error);
-            })
-            .finally(()=>{
-                setLoading(false);
-            });
-    }, [id]);
+        const nombreColeccion = collection (dataBase, 'productos')
+        const ref = doc(nombreColeccion, id);
 
-    console.log(item);
+    getDoc(ref)
+    .then((res)=>{
+        setItem(
+            {
+                id:res.id,
+                ...res.data()
+            }
+        );
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
+    .finally(()=>{
+        setLoading(false);
+    });
+    }, [id]);
 
     return (
         <div>

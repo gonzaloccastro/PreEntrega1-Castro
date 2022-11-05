@@ -1,70 +1,68 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+![LOGO](public/logo192.png)
 
-## Available Scripts
+# Arbol.App
+E-Commerce hecho en React-
 
-In the project directory, you can run:
 
-### `npm start`
+[**La Casa del Árbol**](https://www.instagram.com/_lacasadelarbol_/) _es un centro cultural, bar y librería que promueve el desarrollo cultural de la escena musical independiente de la Ciudad Autónoma de Buenos Aires, Argentina. 
+Este E-Commerce se crea para la venta de productos que diseña o produce esta institución._
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+***
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Construido con 🛠️
 
-### `npm test`
+- [Firebase](https://firebase.google.com/) -
+_Esta plataforma se utilizó para almacenar los productos, las categorías y las ordenes de compra una vez que se creen._
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [React Bootstrap](https://react-bootstrap.github.io/)
+_Esta librería se utiliza para estilizar el navbar, los items, botones y layout._
 
-### `npm run build`
+- [React Spinners](https://www.davidhu.io/react-spinners/)
+_Este elemento se incorpora para los momentos de loading de la app._
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Sweetalert2](https://sweetalert2.github.io/)
+_Esta librería se incorpora para las alertas emergentes._
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+***
+## Funcionalidades del proyecto 📋
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Un usuario puede ingresar, navegar un listado de productos e ir a sus detalles.
+- En su detalle encuentra una descripción, foto y precio y puede agregar los elementos al carrito. Todos los datos provienen de Firebase y están vinculados dinámicamente.
+- El usuario puede armar un carrito y luego ir al checkout sabiendo el total de items y el subtotal de la compra.
+- El usuario debe ingresar nombre, apellido, teléfono y dos veces email sin lo cual no puede pasar al checkout.
+- Al finalizar se guarda una orden con toda esta información en Firebase y se informa al cliente de su número de compra.
 
-### `npm run eject`
+*Carrito*
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Se pueden eliminar los items del carrito individualmente o vaciar el carrito
+- El usuario puede ver la vista detallada de un producto y elegir una cantidad de producto
+- Si un ítem se queda sin stock, no deja entrar al item para evitar conpflictos.
+  
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+***
+## Instalación 🔧
+_A continuación los pasos para correr el proyecto:_
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Clonar el repositorio
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+git clone https://github.com/gonzaloccastro/Proyecto_Final_React.git
+```
 
-## Learn More
+2. Abrirlo en algún editor de código e instalar las dependencias
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+npm i 
+```
+***
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Autor ✒️
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+* **Gonzalo Castro** - *Programación y redacción* - [gonzaloccastro](https://github.com/gonzaloccastro)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+***
+![LOGO](https://res.cloudinary.com/dihxvmgae/image/upload/v1667676158/arbol-app/DSC09145_wi8ki1.jpg)

@@ -14,7 +14,13 @@ const Item = ({prod}) => {
             <br />
             #{prod.categoria}    
             </Card.Text>
-            <Button variant="primary"><Link to={`/item/${prod.id}`} className='url-blanco'> Ver detalle</Link></Button>
+            {
+                prod.stock === 0 ?
+                (<h6>No hay más stock</h6>
+                ):(
+                    <Button variant="primary"><Link to={`/item/${prod.id}`} className='url-blanco'> Ver detalle</Link></Button>
+                )
+            }
         </Card.Body>
         <Card.Footer className="text-muted">Stock disponible: {prod.stock}</Card.Footer>
         </Card>

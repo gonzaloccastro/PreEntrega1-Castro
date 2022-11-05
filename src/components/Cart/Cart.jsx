@@ -2,19 +2,18 @@ import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 
 const Cart = () => {
 
-    const { cart, eliminarTodo, eliminarUno } = useContext(CartContext);
-    
+    const { cart, sumaTotal, eliminarTodo, eliminarUno } = useContext(CartContext);
+
     if (cart.length === 0) {
         return (
         <div>
-            <h1>Aun no hay ningún producto en tu carrito.</h1>
-            <button variant="primary">
-                <Link to={`/`}> Ir a Inicio</Link>
-            </button>
+            <h1 style={{margin:'12rem'}}>Aun no hay ningún producto en tu carrito.</h1>
+            <Button variant="danger"><Link to={`/`} className='url-blanco'>Volver a Inicio</Link></Button>
         </div>
     )}
 
@@ -40,14 +39,16 @@ const Cart = () => {
                     <td>${prod.precio}</td>
                     <td>{prod.cantidad}</td>
                     <td>${prod.precio * prod.cantidad}.-</td>
-                    <td><button size={25} color="red" onClick={() => eliminarUno(prod.id)}>Eliminar</button></td>
+                    <td><Button variant="danger"  onClick={() => eliminarUno(prod.id)} className='url-blanco'>Eliminar</Button></td>
                 </tr>
                 ))}
             </tbody>
         </Table>
-        <div>
-            <h2>Total:</h2>
-            <button onClick={eliminarTodo}>Eliminar todo el carrito</button>
+        <div style={{margin: '2rem'}}>
+            <h2>Total: ${sumaTotal()}.-</h2>
+            <Button style={{margin: '1rem'}} variant="danger" onClick={eliminarTodo} className='url-blanco'>Eliminar todo el carrito</Button>
+
+            <Button variant="success" className='url-blanco'><Link to='/checkout' className='url-blanco'>Checkout</Link></Button>
         </div>
         </div>
     )

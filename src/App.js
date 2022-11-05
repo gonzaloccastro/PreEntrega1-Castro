@@ -4,7 +4,7 @@ import ItemDetailContainer from './components/Main/ItemDetailContainer';
 import NavbarComp from './components/Header/NavbarComp';
 import Cart from './components/Cart/Cart';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Form from './components/Form/Form';
+import Formu from './components/Form/Form';
 import Provider from './context/CartContext';
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
               />
               <Route path='/item/:id' element={<ItemDetailContainer />}/>
               <Route path='/cart' element={<Cart />}/>
-              <Route path='/form' element={<Form />}/>
+              <Route path='/checkout' element={<Formu />}/>
           </Routes>
         </BrowserRouter>
       </div>

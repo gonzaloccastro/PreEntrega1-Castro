@@ -8,13 +8,11 @@ const Provider = ({children}) => {
     const addToCart = (item, cantidad) => {
         const producto = {...item, cantidad};
         if (isInCart(producto.id)) {
-        // Me falta sumar cartel avisando que ya está en el carrito
-        sumarCantidad(producto);
+            sumarCantidad(producto);
         } 
         else
         {setCart([...cart, producto]);}
     };
-
 
     const sumarCantidad = (prodAgregado) => {
         const carritoActualizado = cart.map((prodDelCart)=>{
@@ -29,6 +27,15 @@ const Provider = ({children}) => {
             }
         });
         setCart(carritoActualizado);
+    };
+
+    const sumaTotal = () => {
+        let acc = 0;
+        const copia = [...cart];
+        copia.forEach((prod)=>{
+            acc = acc + (prod.precio * prod.cantidad);
+        });
+        return acc;
     };
 
 
@@ -63,6 +70,7 @@ const Provider = ({children}) => {
                                     eliminarUno, 
                                     sumarCantidad, 
                                     totalUnidades, 
+                                    sumaTotal,
                                     traerCantidadProducto,
                                     }}>
         {children}
